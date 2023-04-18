@@ -5,6 +5,8 @@ Supports late joining by sending a complete game state on connect.
 
 ## Overview
 
+Low level details of the [Nimble Protocol](https://github.com/piot/nimble-serialize-c/blob/main/docs/index.adoc) and how the [server assembles the Steps](https://github.com/piot/nimble-server-lib/blob/main/docs/index.adoc) from the clients.
+
 The package consists of the following main libraries:
 
 * [Nimble Server Lib](https://github.com/piot/nimble-server-lib)
@@ -27,4 +29,4 @@ It also uses general libraries like:
 * [MonotonicTime](https://github.com/piot/monotonic-time-c)
 * [OrderedDatagram](https://github.com/piot/ordered-datagram-c). Discard duplicate and out of order packets.
 * [Stats](https://github.com/piot/stats-c). Keep track of stats.
-* [TinyLibc](https://github.com/piot/tiny_libc). Minimal c-library.
+* [TinyLibc](https://github.com/piot/tiny-libc). Minimal c-library.
