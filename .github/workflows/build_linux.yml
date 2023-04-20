@@ -19,7 +19,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.20
+          go-version: "1.20"
 
       - name: deps fetch dependencies
         run: go run github.com/piot/deps/src/deps@main fetch --move-include
