@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.22)
 project(nimble_client C)
 
 set(CMAKE_C_STANDARD 99)
+set(C_STANDARD_REQUIRED ON)
 #set(CMAKE_C_FLAGS "-std=c99")
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
