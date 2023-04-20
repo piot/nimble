@@ -1,0 +1,12 @@
+depsversion = "0.0.0"
+
+name = "piot/nimble-lib"
+version = "0.0.0"
+
+[[dependencies]]
+name = 'piot/nimble-client-c'
+version = "*"
+
+[[dependencies]]
+name = 'piot/nimble-server-lib'
+version = "*"
