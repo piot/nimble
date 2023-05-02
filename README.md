@@ -34,4 +34,6 @@ It also uses general libraries like:
 * [MonotonicTime](https://github.com/piot/monotonic-time-c)
 * [OrderedDatagram](https://github.com/piot/ordered-datagram-c). Discard duplicate and out of order packets.
 * [Stats](https://github.com/piot/stats-c). Keep track of stats.
-* [TinyLibc](https://github.com/piot/tiny-libc). Minimal c-library.
+* [TinyLibc](https://github.com/piot/tiny-libc). Minimal c-library headers.
+
+It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation.
