@@ -10,9 +10,14 @@ Low level details of the [Nimble Protocol](https://github.com/piot/nimble-serial
 The package consists of the following main libraries:
 
 * [Nimble Server Lib](https://github.com/piot/nimble-server-lib)
-* [Nimble Client](https://github.com/piot/nimble-client-c)
+* [Nimble Engine Client](https://github.com/piot/nimble-engine-client)  which uses:
+  * [Nimble Client](https://github.com/piot/nimble-client-c) for handling the protocol part.
+  * [Rectify](https://github.com/piot/rectify-c) handles rollback and predicting using:
+    * [Assent](https://github.com/piot/assent-c) that keeps track of the authoritative simulation and state.
+    * [Seer](https://github.com/piot/seer-c) given an authoritative state and predicted Steps (input) it can predict the future.
+    * [Transmute](https://github.com/piot/transmute-c). Simulation abstraction (used by both Assent and Seer). Can tick the simulation as well as get and set simulation state.
 
-Shared libraries:
+Shared libraries used by both Client And Server:
 
 * [Nimble Serialize](https://github.com/piot/nimble-serialize-c). Shared serialization for the client and server.
 * [Nimble Steps Serialize](https://github.com/piot/nimble-steps-serialize-c). Shared code for Step (user input) serialization.
@@ -20,8 +25,8 @@ Shared libraries:
 
 It also uses general libraries like:
 
-* [BitArray](https://github.com/piot/bit-array)
 * [BlobStream](https://github.com/piot/blob-stream). Reliable blob transfer over unreliable datagram transports.
+* [BitArray](https://github.com/piot/bit-array)
 * [Clog](https://github.com/piot/clog). Logging.
 * [Discoid](https://github.com/piot/discoid-c). Circular buffer.
 * [Flood](https://github.com/piot/flood-c). Octet streams.
