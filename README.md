@@ -37,3 +37,10 @@ It also uses general libraries like:
 * [TinyLibc](https://github.com/piot/tiny-libc). Minimal c-library headers.
 
 It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation.
+
+Examples:
+
+* [Nimble Ball](https://github.com/piot/nimble-ball).
+  * [Nimble Ball Presentation](https://github.com/piot/nimble-ball-presentation)
+    * [Sdl Render](https://github.com/piot/sdl-render)
+  * [Nimble Ball Simulation](https://github.com/piot/nimble-ball-simulation)
