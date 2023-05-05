@@ -10,3 +10,7 @@ version = "*"
 [[dependencies]]
 name = 'piot/nimble-server-lib'
 version = "*"
+
+[[dependencies]]
+name = 'piot/hazy-c'
+version = "*"

@@ -8,8 +8,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: make clang-12 the default
-        run: sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-12 100
+      - name: make clang-14 the default
+        run: sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-14 100
 
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.11
@@ -44,7 +44,7 @@ jobs:
           path: |
             temp/
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: nimble Linux Library
           path: |
