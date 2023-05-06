@@ -45,3 +45,11 @@ Examples using Nimble Engine:
   * [Nimble Ball Presentation](https://github.com/piot/nimble-ball-presentation)
     * [Sdl Render](https://github.com/piot/sdl-render)
   * [Nimble Ball Simulation](https://github.com/piot/nimble-ball-simulation)
+
+## Get started
+
+* Download the source file zip (nimble_source_code*.zip) from the latest [release](https://github.com/piot/nimble/releases).
+* Extract it to a directory
+* Use the [src/CMakeLists.txt](src/CMakeLists.txt) and modify the paths for where you extracted the source code files.
+* Include the CMakeLists.txt in your project [add_sub_directory](https://cmake.org/cmake/help/latest/command/add_subdirectory.html)
+* add `nimble` to your [target_link_libraries](https://cmake.org/cmake/help/latest/command/target_link_libraries.html)
