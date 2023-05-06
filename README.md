@@ -37,9 +37,9 @@ It also uses general libraries like:
 * [TinyLibc](https://github.com/piot/tiny-libc). Minimal c-library headers.
 * [UdpTransport](https://github.com/piot/udp-transport). Unreliable datagram transport interface.
 
-It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation.
+It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation. It is included in the Nimble Engine, even though it is not a dependency.
 
-Examples:
+Examples using Nimble Engine:
 
 * [Nimble Ball](https://github.com/piot/nimble-ball).
   * [Nimble Ball Presentation](https://github.com/piot/nimble-ball-presentation)
