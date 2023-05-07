@@ -29,7 +29,7 @@ jobs:
           mkdir temp
           mv deps/include temp/
           mv deps temp/src
-          find temp/src -depth -type d \( -name "examples" -o -name "example" -o -name "test" -o -name "tests"  \) -exec rm -rf {} \;
+          find temp/src -depth -type d \( -name "examples" -o -name "example" -o -name "test" -o -name "tests" -o -name ".github" \) -exec rm -rf {} \;
 
       - name: create cmake cache
         run: cmake -DCMAKE_BUILD_TYPE=Debug .
