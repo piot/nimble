@@ -1,15 +1,12 @@
-name: build linux
+name: build macos ventura
 on: [push]
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-22.04
+    runs-on: macos-13
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: make clang-14 the default
-        run: sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-14 100
 
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.14
@@ -47,6 +44,6 @@ jobs:
 
       - uses: actions/upload-artifact@v3.1.2
         with:
-          name: nimble Linux Library
+          name: Nimble MacOS Framework
           path: |
-            src/libnimble.a
+            src/nimble.framework
