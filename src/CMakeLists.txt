@@ -3,7 +3,6 @@ project(nimble C)
 
 set(CMAKE_C_STANDARD 99)
 set(C_STANDARD_REQUIRED ON)
-# set(CMAKE_C_FLAGS "-std=c99")
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
   set(isDebug TRUE)
@@ -18,8 +17,10 @@ if(isDebug)
   set(CONFIGURATION_DEBUG 1)
 endif()
 
-set(lib ../temp/src/piot/)
-set(include ../temp/include)
+set(nimble_dir ../temp/) # Change this to extracted zip directory
+
+set(lib ${nimble_dir}src/piot/)
+set(include ${nimble_dir}include)
 
 set(suffix "/src/lib/*.c")
 
