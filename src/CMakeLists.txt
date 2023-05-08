@@ -51,7 +51,10 @@ file(
   "${lib}transmute-c${suffix}"
   "${lib}udp-transport${suffix}")
 
-add_library(nimble STATIC ${lib_src})
+file(GLOB platform_specific "${lib}monotonic-time-c/src/platform/posix/*.c"
+     "${lib}clog/src/lib/posix/*.c")
+
+add_library(nimble STATIC ${lib_src} ${platform_specific})
 set_target_properties(nimble PROPERTIES FRAMEWORK TRUE)
 
 target_compile_options(
