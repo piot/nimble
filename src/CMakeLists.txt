@@ -51,6 +51,7 @@ file(
   "${lib}udp-transport${suffix}")
 
 add_library(nimble STATIC ${lib_src})
+set_target_properties(nimble PROPERTIES FRAMEWORK TRUE)
 
 target_compile_options(
   nimble
