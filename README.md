@@ -26,7 +26,7 @@ Shared libraries used by both Client And Server:
 It also uses general libraries like:
 
 * [BlobStream](https://github.com/piot/blob-stream). Reliable blob transfer over unreliable datagram transports.
-* [BitArray](https://github.com/piot/bit-array)
+* [BitArray](https://github.com/piot/bit-array). Primarily used by BlobStream.
 * [Clog](https://github.com/piot/clog). Logging.
 * [Discoid](https://github.com/piot/discoid-c). Circular buffer.
 * [Flood](https://github.com/piot/flood-c). Octet streams.
