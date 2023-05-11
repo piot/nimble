@@ -5,7 +5,8 @@ Supports late joining by sending a complete game state on connect.
 
 ## Overview
 
-Low level details of the [Nimble Protocol](https://github.com/piot/nimble-serialize-c/docs/index.adoc) and how the [server assembles the Steps](https://github.com/piot/nimble-server-lib/docs/index.adoc) from the clients.
+Low level details of the [Nimble Protocol](https://github.com/piot/nimble-serialize-c/docs/index.adoc) and how the
+[server assembles the Steps](https://github.com/piot/nimble-server-lib/docs/index.adoc) from the clients.
 
 The package consists of the following main libraries:
 
@@ -15,7 +16,8 @@ The package consists of the following main libraries:
   * [Rectify](https://github.com/piot/rectify-c) handles rollback and predicting using:
     * [Assent](https://github.com/piot/assent-c) that keeps track of the authoritative simulation and state.
     * [Seer](https://github.com/piot/seer-c) given an authoritative state and predicted Steps (input) it can predict the future.
-    * [Transmute](https://github.com/piot/transmute-c). Simulation abstraction (used by both Assent and Seer). Can tick the simulation as well as get and set simulation state.
+    * [Transmute](https://github.com/piot/transmute-c). Simulation abstraction (used by both Assent and Seer).
+        Can tick the simulation as well as get and set simulation state.
 
 Shared libraries used by both Client And Server:
 
@@ -37,14 +39,18 @@ It also uses general libraries like:
 * [TinyLibc](https://github.com/piot/tiny-libc). Minimal c-library headers.
 * [UdpTransport](https://github.com/piot/udp-transport). Unreliable datagram transport interface.
 
-It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation. It is included in the Nimble Engine, even though it is not a dependency.
+It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation.
+It is included in the Nimble Engine, even though it is not a dependency.
 
 ### Transports for testing
 
-There is no Transport Layer included in Nimble, it only relies on the [UDP Transport](https://github.com/piot/udp-transport) interface. But here are two immplementations useful for testing:
+There is no Transport Layer implementation included in Nimble, it only relies on the
+[UDP Transport](https://github.com/piot/udp-transport) interface. But here are two immplementations useful for testing:
 
-* UDP Connections. Very thin layer on top of UDP. [Client](https://github.com/piot/udp-connections-client-c) and [Server](https://github.com/piot/udp-server-connections).
-* Conclave (under development). Basic matchmaking and Datagram relay. [Client](https://github.com/piot/conclave-client-c) and [Server](https://github.com/piot/conclave-server-lib).
+* UDP Connections. Very thin layer on top of UDP.
+  [Client](https://github.com/piot/udp-connections-client-c) and [Server](https://github.com/piot/udp-server-connections).
+* Conclave (under development). Basic matchmaking and Datagram relay.
+  [Client](https://github.com/piot/conclave-client-c) and [Server](https://github.com/piot/conclave-server-lib).
 
 ## Examples
 
