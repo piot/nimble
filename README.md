@@ -5,7 +5,7 @@ Supports late joining by sending a complete game state on connect.
 
 ## Overview
 
-Low level details of the [Nimble Protocol](https://github.com/piot/nimble-serialize-c/blob/main/docs/index.adoc) and how the [server assembles the Steps](https://github.com/piot/nimble-server-lib/blob/main/docs/index.adoc) from the clients.
+Low level details of the [Nimble Protocol](https://github.com/piot/nimble-serialize-c/docs/index.adoc) and how the [server assembles the Steps](https://github.com/piot/nimble-server-lib/docs/index.adoc) from the clients.
 
 The package consists of the following main libraries:
 
@@ -38,6 +38,15 @@ It also uses general libraries like:
 * [UdpTransport](https://github.com/piot/udp-transport). Unreliable datagram transport interface.
 
 It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation. It is included in the Nimble Engine, even though it is not a dependency.
+
+### Transports for testing
+
+There is no Transport Layer included in Nimble, it only relies on the [UDP Transport](https://github.com/piot/udp-transport) interface. But here are two immplementations useful for testing:
+
+* UDP Connections. Very thin layer on top of UDP. [Client](https://github.com/piot/udp-connections-client-c) and [Server](https://github.com/piot/udp-server-connections).
+* Conclave (under development). Basic matchmaking and Datagram relay. [Client](https://github.com/piot/conclave-client-c) and [Server](https://github.com/piot/conclave-server-lib).
+
+## Examples
 
 Examples using Nimble Engine:
 
