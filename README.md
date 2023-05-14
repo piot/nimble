@@ -37,7 +37,7 @@ It also uses general libraries like:
 * [OrderedDatagram](https://github.com/piot/ordered-datagram-c). Discard duplicate and out of order packets.
 * [Stats](https://github.com/piot/stats-c). Keep track of stats.
 * [TinyLibc](https://github.com/piot/tiny-libc). Minimal c-library headers.
-* [UdpTransport](https://github.com/piot/udp-transport). Unreliable datagram transport interface.
+* [DatagramTransport](https://github.com/piot/datagram-transport-c). Unreliable datagram transport interface.
 
 It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation.
 It is included in the Nimble Engine, even though it is not a dependency.
@@ -45,9 +45,9 @@ It is included in the Nimble Engine, even though it is not a dependency.
 ### Transports for testing
 
 There is no Transport Layer implementation included in Nimble, it only relies on the
-[UDP Transport](https://github.com/piot/udp-transport) interface. But here are two immplementations useful for testing:
+[DatagramTransport](https://github.com/piot/datagram-transport-c) interface. But here are two immplementations useful for testing:
 
-* UDP Connections. Very thin layer on top of UDP.
+* UDP Connections. Very thin layer on top of the datagram layer (UDP).
   [Client](https://github.com/piot/udp-connections-client-c) and [Server](https://github.com/piot/udp-server-connections).
 * Conclave (under development). Basic matchmaking and Datagram relay.
   [Client](https://github.com/piot/conclave-client-c) and [Server](https://github.com/piot/conclave-server-lib).
