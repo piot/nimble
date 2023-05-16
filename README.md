@@ -5,8 +5,8 @@ Supports late joining by sending a complete game state on connect.
 
 ## Overview
 
-Low level details of the [Nimble Protocol](https://github.com/piot/nimble-serialize-c/docs/index.adoc) and how the
-[server assembles the Steps](https://github.com/piot/nimble-server-lib/docs/index.adoc) from the clients.
+Low level details of the [Nimble Protocol](https://github.com/piot/nimble-serialize-c/blob/main/docs/index.adoc) and how the
+[server assembles the Steps](https://github.com/piot/nimble-server-lib/blob/main/docs/index.adoc) from the clients.
 
 The package consists of the following main libraries:
 
