@@ -1,0 +1,65 @@
+repo: github.com/piot/nimble
+modules:
+  hazy-c:
+    name: Hazy
+    repo: github.com/piot/hazy-c
+    description: "Internet Simulator"
+  nimble-client-c:
+    name: Nimble Client
+    repo: github.com/piot/nimble-client-c
+    description: "Nimble Protocol Client"
+  nimble-engine-client:
+    name: Nimble Engine Client
+    repo: github.com/piot/nimble-engine-client
+    description: "Nimble Engine Client with prediction and rollback"
+  nimble-server-lib:
+    name: Nimble Server Library
+    repo: github.com/piot/nimble-engine-client
+    description: "Nimble Server Library"
+  nimble-steps-c:
+    name: Nimble Steps
+    repo: github.com/piot/nimble-steps-c
+    description: "Steps handling"
+
+releases:
+  - name: 'v0.0.1-a04'
+    date: '2023-05-17'
+    notice: Focus on disconnect detection on client and server.
+    modules:
+      - name: hazy-c
+        added:
+          - Add `hazyDatagramTransportDebugDiscardIncoming()`. Discards all incoming datagrams. Only used for debugging.
+        changes:
+          - Make worst case configuration a bit nicer. Reduce max jitter from 31 to 6, and decrease worst latency to 190 from 220.
+
+      - name: nimble-client-c
+        added:
+          - Check for disconnect on client. If not gotten any valid datagrams for X (10) ticks or if no new authoritative steps encountered for Y (20) ticks, the connection is disconnected.
+          - Impending disconnect warning. Is triggered if connection is close to being disconnected. If triggered it will stay on for 20 ticks.  Useful for displaying in an application HUD.
+          - Dropping datagram warning. If triggered it will stay on for 20 ticks.  Useful for displaying in an application HUD.
+
+      - name: nimble-engine-client
+        added:
+          - Small gap in time interval warning for incoming authoritative steps. If triggered it will stay on for 20 ticks. Useful for displaying in an application HUD.
+          - Big gap in time interval warning for incoming authoritative steps. If triggered it will stay on for 20 ticks.
+
+      - name: nimble-server-lib
+        added:
+          - Check for disconnects on the server. If steps haven't been received for 120 authoritative step compositions in a row, or if predicted steps frequently is not received in time, the client is disconnected.
+        breaking:
+          - Change from `nbd` prefix for functions to `nimbleServer`.
+        refactored:
+          - file `req_step.c` split up into multiple files.
+        fixes:
+          - Connection index compare against participant connections instead of transport connections.
+
+      - name: nimble-steps-c
+        fixes:
+          - nbsPendingStepRanges should close last range properly
+        tests:
+          - Add test for receive mask and step ranges.
+        refactored:
+          - Move receive mask calculation to separate logic file and struct.
+
+
+
