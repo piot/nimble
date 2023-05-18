@@ -42,3 +42,4 @@ jobs:
           name: Nimble MacOS Framework
           path: |
             temp/nimble.framework
+            temp/CMakeLists.txt
