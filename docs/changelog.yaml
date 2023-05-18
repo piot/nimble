@@ -3,23 +3,39 @@ modules:
   hazy-c:
     name: Hazy
     repo: github.com/piot/hazy-c
-    description: "Internet Simulator"
+    description: Internet Simulator
   nimble-client-c:
     name: Nimble Client
     repo: github.com/piot/nimble-client-c
-    description: "Nimble Protocol Client"
+    description: Nimble Protocol Client
   nimble-engine-client:
     name: Nimble Engine Client
     repo: github.com/piot/nimble-engine-client
-    description: "Nimble Engine Client with prediction and rollback"
+    description: Nimble Engine Client with prediction and rollback
   nimble-server-lib:
     name: Nimble Server Library
-    repo: github.com/piot/nimble-engine-client
-    description: "Nimble Server Library"
+    repo: github.com/piot/nimble-server-lib
+    description: Nimble Server Library
   nimble-steps-c:
     name: Nimble Steps
     repo: github.com/piot/nimble-steps-c
-    description: "Steps handling"
+    description: Steps handling
+  datagram-transport-c:
+    name: Datagram Transport
+    repo: github.com/piot/datagram-transport-c
+    description: Datagram Transport Interface
+  flood-c:
+    name: Octet Streams
+    repo: github.com/piot/flood-c
+    description: Octet streams
+  monotonic-time-c:
+    name: Monotonic Time
+    repo: github.com/piot/monotonic-time-c
+    description: Monotonic Time
+  seer-c:
+    name: Seer
+    repo: github.com/piot/seer-c
+    description: Prediction Library
 
 releases:
   - name: 'v0.0.1-a04'
@@ -28,38 +44,109 @@ releases:
     modules:
       - name: hazy-c
         added:
-          - Add `hazyDatagramTransportDebugDiscardIncoming()`. Discards all incoming datagrams. Only used for debugging.
-        changes:
-          - Make worst case configuration a bit nicer. Reduce max jitter from 31 to 6, and decrease worst latency to 190 from 220.
+          - Add `hazyDatagramTransportDebugDiscardIncoming()`. Discards all
+            incoming datagrams. Only used for debugging.
+        changed:
+          - Make worst case configuration a bit nicer. Reduce max jitter from 31
+            to 6, and decrease worst latency to 190 from 220.
 
       - name: nimble-client-c
         added:
-          - Check for disconnect on client. If not gotten any valid datagrams for X (10) ticks or if no new authoritative steps encountered for Y (20) ticks, the connection is disconnected.
-          - Impending disconnect warning. Is triggered if connection is close to being disconnected. If triggered it will stay on for 20 ticks.  Useful for displaying in an application HUD.
-          - Dropping datagram warning. If triggered it will stay on for 20 ticks.  Useful for displaying in an application HUD.
+          - Check for disconnect on client. If not gotten any valid datagrams
+            for X (10) ticks or if no new authoritative steps encountered for Y
+            (20) ticks, the connection is disconnected.
+          - Impending disconnect warning. Is triggered if connection is close to
+            being disconnected. If triggered it will stay on for 20
+            ticks.  Useful for displaying in an application HUD.
+          - Dropping datagram warning. If triggered it will stay on for 20
+            ticks.  Useful for displaying in an application HUD.
 
       - name: nimble-engine-client
         added:
-          - Small gap in time interval warning for incoming authoritative steps. If triggered it will stay on for 20 ticks. Useful for displaying in an application HUD.
-          - Big gap in time interval warning for incoming authoritative steps. If triggered it will stay on for 20 ticks.
+          - Small gap in time interval warning for incoming authoritative steps.
+            If triggered it will stay on for 20 ticks. Useful for displaying in
+            an application HUD.
+          - Big gap in time interval warning for incoming authoritative steps.
+            If triggered it will stay on for 20 ticks.
 
       - name: nimble-server-lib
         added:
-          - Check for disconnects on the server. If steps haven't been received for 120 authoritative step compositions in a row, or if predicted steps frequently is not received in time, the client is disconnected.
+          - Check for disconnects on the server. If steps haven't been received
+            for 120 authoritative step compositions in a row, or if predicted
+            steps frequently is not received in time, the client is
+            disconnected.
         breaking:
           - Change from `nbd` prefix for functions to `nimbleServer`.
         refactored:
           - file `req_step.c` split up into multiple files.
-        fixes:
-          - Connection index compare against participant connections instead of transport connections.
+        fixed:
+          - Connection index compare against participant connections instead of
+            transport connections.
 
       - name: nimble-steps-c
-        fixes:
+        fixed:
           - nbsPendingStepRanges should close last range properly
         tests:
           - Add test for receive mask and step ranges.
         refactored:
           - Move receive mask calculation to separate logic file and struct.
 
+  # ------
 
+  - name: 'v0.0.1-a03'
+    date: '2023-05-15'
+    notice:
+    modules:
+      - name: datagram-transport-c
+        added:
+          - udp transport changed name to datagram transport, to clarify that it
+            is an interface and not directly tied to UDP
+        changed:
+          - datagram transport receive now returns `ssize_t`.
 
+      - name: flood-c
+        fixed:
+          - soft error instead of execution halt for failed verification of
+            markers.
+
+      - name: hazy-c
+        added:
+          - use new datagram transport.
+        fixed:
+          - log instead of halting on buffer overflow.
+        changed:
+          - tweaked values for good, recommended and worst case.
+
+      - name: monotonic-time-c
+        fixed:
+          - suspicious lower bits diff is now a soft error and does not halt
+            execution.
+
+      - name: nimble-client-c
+        added:
+          - use new datagram transport
+          - Lagometer. A sliding window with latency and drop information for
+            each packet received.
+
+      - name: nimble-engine-client
+        added:
+          - use new datagram transport.
+        fixed:
+          - use time tick to handle cases where update was called too
+            frequently.
+          - check for overflow of predicted buffer.
+          - temporary skip ahead. There is still a bug where it sometimes can
+            not skip ahead, but this fix might help with some cases.
+
+      - name: nimble-server-lib
+        added:
+          - use multi transport
+        breaking:
+          - renamed some of the function name prefix from nbd to nimble server.
+            Makes it eaiser to understand where the code is coming from.
+        docs:
+          - clarify forced step in documentation.
+
+      - name: seer-c
+        changed:
+          - rename to participantId instead of index.
