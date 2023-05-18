@@ -7,7 +7,7 @@ set(C_STANDARD_REQUIRED ON)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
   set(isDebug TRUE)
 else()
-  message("no debug")
+  message("Debug not detected")
   set(isDebug FALSE)
 endif()
 
@@ -17,7 +17,7 @@ if(isDebug)
   set(CONFIGURATION_DEBUG 1)
 endif()
 
-set(nimble_dir ../temp/) # Change this to extracted zip directory
+set(nimble_dir ./)
 
 set(lib ${nimble_dir}src/piot/)
 set(include ${nimble_dir}include)

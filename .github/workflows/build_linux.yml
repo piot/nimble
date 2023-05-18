@@ -9,7 +9,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: make clang-14 the default
-        run: sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-14 100
+        run:
+          sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-14
+          100
 
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.14
@@ -30,6 +32,7 @@ jobs:
           mv deps/include temp/
           mv deps temp/src
           find temp/src -depth -type d \( -name "examples" -o -name "example" -o -name "test" -o -name "tests" -o -name ".github" \) -exec rm -rf {} \;
+          cp src/CMakeLists.txt temp/
 
       - name: create cmake cache
         run: cmake -DCMAKE_BUILD_TYPE=Debug .
