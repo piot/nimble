@@ -45,11 +45,11 @@ jobs:
         working-directory: temp
 
       - name: build
-        run: cmake --build ../temp --clean-first
-        working-directory: src
+        run: cmake --build . --clean-first
+        working-directory: temp
 
       - uses: actions/upload-artifact@v3.1.2
         with:
           name: nimble Linux Library
           path: |
-            src/libnimble.a
+            temp/libnimble.a
