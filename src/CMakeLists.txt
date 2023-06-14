@@ -41,11 +41,7 @@ else()
   set(isDebug FALSE)
 endif()
 
-if(isDebug)
-  message("Debug build detected")
-  add_compile_definitions(CONFIGURATION_DEBUG TYRAN_CONFIGURATION_DEBUG)
-  set(CONFIGURATION_DEBUG 1)
-endif()
+
 
 set(nimble_dir ./)
 
@@ -85,6 +81,12 @@ file(GLOB platform_specific "${lib}monotonic-time-c/src/platform/posix/*.c"
      "${lib}clog/src/lib/posix/*.c")
 
 add_library(nimble STATIC ${lib_src} ${platform_specific})
+if(isDebug)
+  message("Debug build detected")
+  target_compile_definitions(nimble PRIVATE CONFIGURATION_DEBUG TYRAN_CONFIGURATION_DEBUG)
+  set(CONFIGURATION_DEBUG 1)
+endif()
+
 set_target_properties(nimble PROPERTIES FRAMEWORK TRUE)
 
 if(OS_WINDOWS)
