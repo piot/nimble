@@ -1,5 +1,17 @@
 # Changelog
 
+## :bookmark: [v0.0.1-a05](https://github.com/piot/nimble/releases/tag/v0.0.1-a05) (2023-06-14)
+
+Hot fixes to alleviate skip ahead problems.
+
+### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Nimble Engine Client with prediction and rollback
+
+* :hammer_and_wrench: Increase wait time between each skip ahead attempt
+
+### [nimble-server-lib](https://github.com/piot/nimble-server-lib) - Nimble Server Library
+
+* :hammer_and_wrench: Skip increase forcedStepInRowCounter if client transport connection is downloading game state
+
 ## :bookmark: [v0.0.1-a04](https://github.com/piot/nimble/releases/tag/v0.0.1-a04) (2023-05-17)
 
 Focus on disconnect detection on client and server.

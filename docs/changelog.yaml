@@ -38,6 +38,18 @@ modules:
     description: Prediction Library
 
 releases:
+  - name: 'v0.0.1-a05'
+    date: '2023-06-14'
+    notice: Hot fixes to alleviate skip ahead problems.
+    modules:
+      - name: nimble-engine-client
+        changed:
+          - Increase wait time between each skip ahead attempt
+
+      - name: nimble-server-lib
+        changed:
+          - Skip increase forcedStepInRowCounter if client transport connection is downloading game state
+
   - name: 'v0.0.1-a04'
     date: '2023-05-17'
     notice: Focus on disconnect detection on client and server.
