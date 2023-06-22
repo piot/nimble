@@ -12,5 +12,9 @@ name = 'piot/nimble-server-lib'
 version = "*"
 
 [[dependencies]]
+name = 'piot/datagram-transport-local'
+version = "*"
+
+[[dependencies]]
 name = 'piot/hazy-c'
 version = "*"
