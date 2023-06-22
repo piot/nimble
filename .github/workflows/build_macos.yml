@@ -1,4 +1,4 @@
-name: build macos ventura
+name: Build MacOS Ventura
 on: [push]
 jobs:
   build:
