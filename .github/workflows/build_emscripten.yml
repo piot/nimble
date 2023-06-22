@@ -1,0 +1,55 @@
+name: Build Emscripten
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Install Emscripten SDK
+        uses: mymindstorm/setup-emsdk@v11
+
+      - name: Check Emscripten version
+        run: emcc -v
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: make clang-14 the default
+        run:
+          sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-14
+          100
+
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.14
+        with:
+          cmake-version: '3.26.x'
+
+      - name: Install Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+
+      - name: deps fetch dependencies
+        run: go run github.com/piot/deps/src/deps@main fetch --move-include
+
+      - name: move deps
+        run: |
+          mkdir temp
+          mv deps/include temp/
+          mv deps temp/src
+          find temp/src -depth -type d \( -name "examples" -o -name "example" -o -name "test" -o -name "tests" -o -name ".github" \) -exec rm -rf {} \;
+          cp src/CMakeLists.txt temp/
+
+      - name: create cmake cache using emscripten (emcmake)
+        run: emcmake cmake -DCMAKE_BUILD_TYPE=Debug .
+        working-directory: temp
+
+      - name: build
+        run: cmake --build . --clean-first
+        working-directory: temp
+
+      - uses: actions/upload-artifact@v3.1.2
+        with:
+          name: nimble Linux Library
+          path: |
+            temp/libnimble.a
