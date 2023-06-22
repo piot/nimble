@@ -11,7 +11,7 @@ modules:
   nimble-engine-client:
     name: Nimble Engine Client
     repo: github.com/piot/nimble-engine-client
-    description: Nimble Engine Client with prediction and rollback
+    description: Prediction and rollback
   nimble-server-lib:
     name: Nimble Server Library
     repo: github.com/piot/nimble-server-lib
@@ -36,8 +36,28 @@ modules:
     name: Seer
     repo: github.com/piot/seer-c
     description: Prediction Library
+  clog:
+    Name: CLog
+    repo: github.com/piot/clog
+    description: Basic logging
+  secure-random-c:
+    Name: Secure Random
+    repo: github.com/piot/secure-random-c
+    description: Multi-platform Secure Random
 
 releases:
+  - name: 'v0.0.1-a06'
+    date: '2023-06-22'
+    notice: Minor compile fixes for emscripten.
+    modules:
+      - name: clog
+        changed:
+          - use tc_snprintf instead of sprintf (#1)
+
+      - name: secure-random-c
+        changed:
+          - secureRandomUInt64() on emscripten that only return 0
+
   - name: 'v0.0.1-a05'
     date: '2023-06-14'
     notice: Hot fixes to alleviate skip ahead problems.
@@ -48,7 +68,8 @@ releases:
 
       - name: nimble-server-lib
         changed:
-          - Skip increase forcedStepInRowCounter if client transport connection is downloading game state
+          - Skip increase forcedStepInRowCounter if client transport connection
+            is downloading game state
 
   - name: 'v0.0.1-a04'
     date: '2023-05-17'
