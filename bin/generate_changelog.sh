@@ -1,1 +1,1 @@
-changelog-yaml-go ../docs/changelog.yaml > ../CHANGELOG.md
+changelog-yaml-go < ../docs/changelog.yaml > ../CHANGELOG.md

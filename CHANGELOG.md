@@ -1,10 +1,22 @@
 # Changelog
 
+## :bookmark: [v0.0.1-a06](https://github.com/piot/nimble/releases/tag/v0.0.1-a06) (2023-06-22)
+
+Minor compile fixes for emscripten.
+
+### [clog](https://github.com/piot/clog) - Basic logging
+
+* :lady_beetle: use `tc_snprintf` instead of `sprintf` ([#1](https://github.com/piot/clog/pull/1))
+
+### [secure-random-c](https://github.com/piot/secure-random-c) - Multi-platform Secure Random
+
+* :see_no_evil: `secureRandomUInt64()` on emscripten that only return 0
+
 ## :bookmark: [v0.0.1-a05](https://github.com/piot/nimble/releases/tag/v0.0.1-a05) (2023-06-14)
 
 Hot fixes to alleviate skip ahead problems.
 
-### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Nimble Engine Client with prediction and rollback
+### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Prediction and rollback
 
 * :hammer_and_wrench: Increase wait time between each skip ahead attempt
 
@@ -27,7 +39,7 @@ Focus on disconnect detection on client and server.
 * :star2: Impending disconnect warning. Is triggered if connection is close to being disconnected. If triggered it will stay on for 20 ticks.  Useful for displaying in an application HUD.
 * :star2: Dropping datagram warning. If triggered it will stay on for 20 ticks.  Useful for displaying in an application HUD.
 
-### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Nimble Engine Client with prediction and rollback
+### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Prediction and rollback
 
 * :star2: Small gap in time interval warning for incoming authoritative steps. If triggered it will stay on for 20 ticks. Useful for displaying in an application HUD.
 * :star2: Big gap in time interval warning for incoming authoritative steps. If triggered it will stay on for 20 ticks.
@@ -71,7 +83,7 @@ Focus on disconnect detection on client and server.
 * :star2: use new datagram transport
 * :star2: Lagometer. A sliding window with latency and drop information for each packet received.
 
-### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Nimble Engine Client with prediction and rollback
+### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Prediction and rollback
 
 * :star2: use new datagram transport.
 * :lady_beetle: use time tick to handle cases where update was called too frequently.
