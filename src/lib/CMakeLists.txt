@@ -87,6 +87,7 @@ if(COMPILER_CLANG)
                                              # even if std=c99
             -Wno-unsafe-buffer-usage # unclear why it fails on clang-16
             -Wno-unknown-warning-option # support newer clang versions, e.g. clang-16
+            -Wno-disabled-macro-expansion
             ${sanitizers})
 elseif(COMPILER_GCC)
 target_compile_options(
