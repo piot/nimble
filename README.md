@@ -38,6 +38,8 @@ It also uses general libraries like:
 * [Stats](https://github.com/piot/stats-c). Keep track of stats.
 * [TinyLibc](https://github.com/piot/tiny-libc). Minimal c-library headers.
 * [DatagramTransport](https://github.com/piot/datagram-transport-c). Unreliable datagram transport interface.
+* [Lagometer](https://github.com/piot/piot/lagometer-c). Lagometer stats.
+* [TimeTick](https://github.com/piot/piot/time-tick-c). Time to ticks.
 
 It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation.
 It is included in the Nimble Engine, even though it is not a dependency.

@@ -1,6 +1,6 @@
 depsversion = "0.0.0"
 
-name = "piot/nimble-lib"
+name = "piot/nimble"
 version = "0.0.0"
 
 [[dependencies]]
