@@ -32,6 +32,10 @@ modules:
     name: Monotonic Time
     repo: github.com/piot/monotonic-time-c
     description: Monotonic Time
+  time-tick-c:
+    name: Time Tick
+    repo: github.com/piot/time-tick-c
+    description: Tick updater
   seer-c:
     name: Seer
     repo: github.com/piot/seer-c
@@ -46,27 +50,52 @@ modules:
     description: Multi-platform Secure Random
 
 releases:
+  - name: 'v0.0.1-a07'
+    date: '2023-07-04'
+    notice:
+      Idiomatic separate cmake files for each library. Fix a lot of compile warnings. Improve doxygen
+      documentation.
+    modules:
+      datagram-transport-c:
+        breaking:
+          - '`datagramTransportMultiReceiveFrom()` return `ssize_t` instead of
+            `int`. $6c3d3b9'
+
+      time-tick-c:
+        improved:
+          - 'Smoother ticks. As long as possible, do one tick for each update
+            (does not work if update rate is a lot higher or lower than the target tick
+            rate). #1'
+
+      nimble-engine-client:
+        removed:
+          - remove unused field `isHostingLocally`
+
+      secure-random-c:
+        workaround:
+          - 'halt execution (`SIGABRT`) in `secureRandomUInt64()` on Emscripten. #2'
+
   - name: 'v0.0.1-a06'
     date: '2023-06-22'
     notice: Minor compile fixes for emscripten.
     modules:
-      - name: clog
+      clog:
         fixed:
           - use `tc_snprintf` instead of `sprintf` (#1)
 
-      - name: secure-random-c
+      secure-random-c:
         workaround:
-          - "`secureRandomUInt64()` on emscripten that only return 0"
+          - '`secureRandomUInt64()` on emscripten that only return 0'
 
   - name: 'v0.0.1-a05'
     date: '2023-06-14'
     notice: Hot fixes to alleviate skip ahead problems.
     modules:
-      - name: nimble-engine-client
+      nimble-engine-client:
         changed:
           - Increase wait time between each skip ahead attempt
 
-      - name: nimble-server-lib
+      nimble-server-lib:
         changed:
           - Skip increase forcedStepInRowCounter if client transport connection
             is downloading game state
@@ -75,7 +104,7 @@ releases:
     date: '2023-05-17'
     notice: Focus on disconnect detection on client and server.
     modules:
-      - name: hazy-c
+      hazy-c:
         added:
           - Add `hazyDatagramTransportDebugDiscardIncoming()`. Discards all
             incoming datagrams. Only used for debugging.
@@ -83,7 +112,7 @@ releases:
           - Make worst case configuration a bit nicer. Reduce max jitter from 31
             to 6, and decrease worst latency to 190 from 220.
 
-      - name: nimble-client-c
+      nimble-client-c:
         added:
           - Check for disconnect on client. If not gotten any valid datagrams
             for X (10) ticks or if no new authoritative steps encountered for Y
@@ -94,7 +123,7 @@ releases:
           - Dropping datagram warning. If triggered it will stay on for 20
             ticks.  Useful for displaying in an application HUD.
 
-      - name: nimble-engine-client
+      nimble-engine-client:
         added:
           - Small gap in time interval warning for incoming authoritative steps.
             If triggered it will stay on for 20 ticks. Useful for displaying in
@@ -102,7 +131,7 @@ releases:
           - Big gap in time interval warning for incoming authoritative steps.
             If triggered it will stay on for 20 ticks.
 
-      - name: nimble-server-lib
+      nimble-server-lib:
         added:
           - Check for disconnects on the server. If steps haven't been received
             for 120 authoritative step compositions in a row, or if predicted
@@ -116,7 +145,7 @@ releases:
           - Connection index compare against participant connections instead of
             transport connections.
 
-      - name: nimble-steps-c
+      nimble-steps-c:
         fixed:
           - nbsPendingStepRanges should close last range properly
         tests:
@@ -130,19 +159,19 @@ releases:
     date: '2023-05-15'
     notice:
     modules:
-      - name: datagram-transport-c
+      datagram-transport-c:
         added:
           - udp transport changed name to datagram transport, to clarify that it
             is an interface and not directly tied to UDP
         changed:
           - datagram transport receive now returns `ssize_t`.
 
-      - name: flood-c
+      flood-c:
         fixed:
           - soft error instead of execution halt for failed verification of
             markers.
 
-      - name: hazy-c
+      hazy-c:
         added:
           - use new datagram transport.
         fixed:
@@ -150,18 +179,18 @@ releases:
         changed:
           - tweaked values for good, recommended and worst case.
 
-      - name: monotonic-time-c
+      monotonic-time-c:
         fixed:
           - suspicious lower bits diff is now a soft error and does not halt
             execution.
 
-      - name: nimble-client-c
+      nimble-client-c:
         added:
           - use new datagram transport
           - Lagometer. A sliding window with latency and drop information for
             each packet received.
 
-      - name: nimble-engine-client
+      nimble-engine-client:
         added:
           - use new datagram transport.
         fixed:
@@ -171,7 +200,7 @@ releases:
           - temporary skip ahead. There is still a bug where it sometimes can
             not skip ahead, but this fix might help with some cases.
 
-      - name: nimble-server-lib
+      nimble-server-lib:
         added:
           - use multi transport
         breaking:
@@ -180,6 +209,6 @@ releases:
         docs:
           - clarify forced step in documentation.
 
-      - name: seer-c
+      seer-c:
         changed:
           - rename to participantId instead of index.

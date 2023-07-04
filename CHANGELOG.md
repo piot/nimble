@@ -1,5 +1,25 @@
 # Changelog
 
+## :bookmark: [v0.0.1-a07](https://github.com/piot/nimble/releases/tag/v0.0.1-a07) (2023-07-04)
+
+Idiomatic separate cmake files for each library. Fix a lot of compile warnings. Improve doxygen documentation.
+
+### [datagram-transport-c](https://github.com/piot/datagram-transport-c) - Datagram Transport Interface
+
+* :rotating_light:[breaking] `datagramTransportMultiReceiveFrom()` return `ssize_t` instead of `int`. [6c3d3b9](https://github.com/piot/datagram-transport-c/commit/6c3d3b9)
+
+### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Prediction and rollback
+
+* :fire: remove unused field `isHostingLocally`
+
+### [secure-random-c](https://github.com/piot/secure-random-c) - Multi-platform Secure Random
+
+* :see_no_evil: halt execution (`SIGABRT`) in `secureRandomUInt64()` on Emscripten. [#2](https://github.com/piot/secure-random-c/pull/2)
+
+### [time-tick-c](https://github.com/piot/time-tick-c) - Tick updater
+
+* :art: Smoother ticks. As long as possible, do one tick for each update (does not work if update rate is a lot higher or lower than the target tick rate). [#1](https://github.com/piot/time-tick-c/pull/1)
+
 ## :bookmark: [v0.0.1-a06](https://github.com/piot/nimble/releases/tag/v0.0.1-a06) (2023-06-22)
 
 Minor compile fixes for emscripten.
