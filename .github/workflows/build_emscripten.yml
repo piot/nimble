@@ -33,7 +33,7 @@ jobs:
         run: go run github.com/piot/deps/src/deps@main fetch -t src/deps
 
       - name: create cmake cache using emscripten (emcmake)
-        run: emcmake cmake -DCMAKE_BUILD_TYPE=Debug .
+        run: emcmake cmake -DMAKE_WASM_BUILD=ON -DCMAKE_BUILD_TYPE=Debug .
         working-directory: src
 
       - name: build
