@@ -1,52 +1,52 @@
-repo: github.com/piot/nimble
-modules:
+repo: piot/nimble
+repos:
   hazy-c:
     name: Hazy
-    repo: github.com/piot/hazy-c
+    repo: piot/hazy-c
     description: Internet Simulator
   nimble-client-c:
     name: Nimble Client
-    repo: github.com/piot/nimble-client-c
+    repo: piot/nimble-client-c
     description: Nimble Protocol Client
   nimble-engine-client:
     name: Nimble Engine Client
-    repo: github.com/piot/nimble-engine-client
+    repo: piot/nimble-engine-client
     description: Prediction and rollback
   nimble-server-lib:
     name: Nimble Server Library
-    repo: github.com/piot/nimble-server-lib
+    repo: piot/nimble-server-lib
     description: Nimble Server Library
   nimble-steps-c:
     name: Nimble Steps
-    repo: github.com/piot/nimble-steps-c
+    repo: piot/nimble-steps-c
     description: Steps handling
   datagram-transport-c:
     name: Datagram Transport
-    repo: github.com/piot/datagram-transport-c
+    repo: piot/datagram-transport-c
     description: Datagram Transport Interface
   flood-c:
     name: Octet Streams
-    repo: github.com/piot/flood-c
+    repo: piot/flood-c
     description: Octet streams
   monotonic-time-c:
     name: Monotonic Time
-    repo: github.com/piot/monotonic-time-c
+    repo: piot/monotonic-time-c
     description: Monotonic Time
   time-tick-c:
     name: Time Tick
-    repo: github.com/piot/time-tick-c
+    repo: piot/time-tick-c
     description: Tick updater
   seer-c:
     name: Seer
-    repo: github.com/piot/seer-c
+    repo: piot/seer-c
     description: Prediction Library
   clog:
     Name: CLog
-    repo: github.com/piot/clog
+    repo: piot/clog
     description: Basic logging
   secure-random-c:
     Name: Secure Random
-    repo: github.com/piot/secure-random-c
+    repo: piot/secure-random-c
     description: Multi-platform Secure Random
 
 releases:
@@ -55,7 +55,7 @@ releases:
     notice:
       Idiomatic separate cmake files for each library. Fix a lot of compile warnings. Improve doxygen
       documentation.
-    modules:
+    repos:
       datagram-transport-c:
         breaking:
           - '`datagramTransportMultiReceiveFrom()` return `ssize_t` instead of
@@ -78,7 +78,7 @@ releases:
   - name: 'v0.0.1-a06'
     date: '2023-06-22'
     notice: Minor compile fixes for emscripten.
-    modules:
+    repos:
       clog:
         fixed:
           - use `tc_snprintf` instead of `sprintf` (#1)
@@ -90,7 +90,7 @@ releases:
   - name: 'v0.0.1-a05'
     date: '2023-06-14'
     notice: Hot fixes to alleviate skip ahead problems.
-    modules:
+    repos:
       nimble-engine-client:
         changed:
           - Increase wait time between each skip ahead attempt
@@ -103,7 +103,7 @@ releases:
   - name: 'v0.0.1-a04'
     date: '2023-05-17'
     notice: Focus on disconnect detection on client and server.
-    modules:
+    repos:
       hazy-c:
         added:
           - Add `hazyDatagramTransportDebugDiscardIncoming()`. Discards all
@@ -158,7 +158,7 @@ releases:
   - name: 'v0.0.1-a03'
     date: '2023-05-15'
     notice:
-    modules:
+    repos:
       datagram-transport-c:
         added:
           - udp transport changed name to datagram transport, to clarify that it

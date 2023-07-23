@@ -6,7 +6,7 @@ Idiomatic separate cmake files for each library. Fix a lot of compile warnings. 
 
 ### [datagram-transport-c](https://github.com/piot/datagram-transport-c) - Datagram Transport Interface
 
-* :rotating_light:[breaking] `datagramTransportMultiReceiveFrom()` return `ssize_t` instead of `int`. [6c3d3b9](https://github.com/piot/datagram-transport-c/commit/6c3d3b9)
+* :triangular_flag_on_post:[breaking] `datagramTransportMultiReceiveFrom()` return `ssize_t` instead of `int`. [6c3d3b9](https://github.com/piot/datagram-transport-c/commit/6c3d3b9)
 
 ### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Prediction and rollback
 
@@ -66,7 +66,7 @@ Focus on disconnect detection on client and server.
 
 ### [nimble-server-lib](https://github.com/piot/nimble-server-lib) - Nimble Server Library
 
-* :rotating_light:[breaking] Change from `nbd` prefix for functions to `nimbleServer`.
+* :triangular_flag_on_post:[breaking] Change from `nbd` prefix for functions to `nimbleServer`.
 * :star2: Check for disconnects on the server. If steps haven't been received for 120 authoritative step compositions in a row, or if predicted steps frequently is not received in time, the client is disconnected.
 * :lady_beetle: Connection index compare against participant connections instead of transport connections.
 * :recycle: file `req_step.c` split up into multiple files.
@@ -112,7 +112,7 @@ Focus on disconnect detection on client and server.
 
 ### [nimble-server-lib](https://github.com/piot/nimble-server-lib) - Nimble Server Library
 
-* :rotating_light:[breaking] renamed some of the function name prefix from nbd to nimble server. Makes it eaiser to understand where the code is coming from.
+* :triangular_flag_on_post:[breaking] renamed some of the function name prefix from nbd to nimble server. Makes it eaiser to understand where the code is coming from.
 * :star2: use multi transport
 * :book: clarify forced step in documentation.
 
