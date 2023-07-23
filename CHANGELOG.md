@@ -34,7 +34,9 @@ Minor compile fixes for emscripten.
 
 ## :bookmark: [v0.0.1-a05](https://github.com/piot/nimble/releases/tag/v0.0.1-a05) (2023-06-14)
 
-Hot fixes to alleviate skip ahead problems.
+> [!IMPORTANT]\
+> Hot fixes to alleviate skip ahead problems.
+
 
 ### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Prediction and rollback
 
@@ -119,3 +121,4 @@ Focus on disconnect detection on client and server.
 ### [seer-c](https://github.com/piot/seer-c) - Prediction Library
 
 * :hammer_and_wrench: rename to participantId instead of index.
+

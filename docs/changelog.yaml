@@ -52,9 +52,7 @@ repos:
 releases:
   - name: 'v0.0.1-a07'
     date: '2023-07-04'
-    notice:
-      Idiomatic separate cmake files for each library. Fix a lot of compile warnings. Improve doxygen
-      documentation.
+    notice: Idiomatic separate cmake files for each library. Fix a lot of compile warnings. Improve doxygen documentation.
     repos:
       datagram-transport-c:
         breaking:
@@ -64,8 +62,8 @@ releases:
       time-tick-c:
         improved:
           - 'Smoother ticks. As long as possible, do one tick for each update
-            (does not work if update rate is a lot higher or lower than the target tick
-            rate). #1'
+            (does not work if update rate is a lot higher or lower than the
+            target tick rate). #1'
 
       nimble-engine-client:
         removed:
@@ -73,7 +71,8 @@ releases:
 
       secure-random-c:
         workaround:
-          - 'halt execution (`SIGABRT`) in `secureRandomUInt64()` on Emscripten. #2'
+          - 'halt execution (`SIGABRT`) in `secureRandomUInt64()` on Emscripten.
+            #2'
 
   - name: 'v0.0.1-a06'
     date: '2023-06-22'
@@ -89,7 +88,8 @@ releases:
 
   - name: 'v0.0.1-a05'
     date: '2023-06-14'
-    notice: Hot fixes to alleviate skip ahead problems.
+    notice: |
+            IMPORTANT: Hot fixes to alleviate skip ahead problems.
     repos:
       nimble-engine-client:
         changed:
