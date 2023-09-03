@@ -1,5 +1,70 @@
 # Changelog
 
+## :bookmark: [v0.0.1-a08](https://github.com/piot/nimble/releases/tag/v0.0.1-a08) (2023-09-03)
+
+New feature that enables a client to rejoin the game after being disconnected.
+When a client joins a game, a secret is provided by the server. That secret can be provided
+on future rejoins to retain most of the clients avatar state and similar.
+
+
+### [assent-c](https://github.com/piot/assent-c) - Authoritative State
+
+* :star2: convert between Step connect state and transmute input type
+* :art: clean up CMakeLists.txt
+
+### [clog](https://github.com/piot/clog) - Basic logging
+
+* :lady_beetle: fix incorrect `clog_gmtime_s()` ([#7](https://github.com/piot/clog/pull/7))
+
+### [flood-c](https://github.com/piot/flood-c) - Octet streams
+
+* :hammer_and_wrench: only write and check markers when it is a debug info stream
+
+### [imprint](https://github.com/piot/imprint) - memory allocator
+
+* :art: clean up CMakeLists.txt
+
+### [nimble-client-c](https://github.com/piot/nimble-client-c) - Nimble Protocol Client
+
+* :star2: add connect request and response. ([#2](https://github.com/piot/nimble-client-c/pull/2))
+* :star2: option to request debug streams using `wantsDebugStreams`
+* :art: more optimal step id to send to server based on latency. [ab1d78f](https://github.com/piot/nimble-client-c/commit/ab1d78f)
+
+### [nimble-engine-client](https://github.com/piot/nimble-engine-client) - Prediction and rollback
+
+* :star2: add `connectionSecretIsProvided` and `connectionSecret` fields in join options ([#2](https://github.com/piot/nimble-engine-client/pull/2))
+
+### [nimble-serialize-c](https://github.com/piot/nimble-serialize-c) - Nimble Protocol
+
+* :star2: connect request and response that includes request for debug streams
+* :star2: serialize secret for participant connection
+* :art: proper command types for join game request and join game response
+* :art: clean up CMakeLists.txt
+
+### [nimble-server-lib](https://github.com/piot/nimble-server-lib) - Nimble Server Library
+
+* :star2: include a random secret in join game response to enable possible reconnect to the same participant connection by the client.
+* :star2: add `maxWaitingForReconnectTicks` field to setup.
+* :star2: keep the participantConnection alive for reconnect (up to `maxWaitingForReconnectTicks``)
+* :lady_beetle: have a more forgiving disconnect timeout until the first step (input) is received from the client (presumably is done with downloading the state)
+
+### [nimble-steps-serialize-c](https://github.com/piot/nimble-steps-serialize-c) - Nimble Steps Serialize
+
+* :star2: add connect state that can indicate one of 'normal', 'not provided in time' and 'waiting for reconnect' ([#2](https://github.com/piot/nimble-steps-serialize-c/pull/2))
+* :art: clean up CMakeLists.txt
+
+### [seer-c](https://github.com/piot/seer-c) - Prediction Library
+
+* :star2: convert from input type to connect state ([#2](https://github.com/piot/seer-c/pull/2))
+
+### [time-tick-c](https://github.com/piot/time-tick-c) - Tick updater
+
+* :art: clean up code to increase readability
+
+### [transmute-c](https://github.com/piot/transmute-c) - Ticks simulation with input
+
+* :star2: input type that can be either Normal, NoInputInTime, or WaitingForReconnect [77e87f2](https://github.com/piot/transmute-c/commit/77e87f2)
+
 ## :bookmark: [v0.0.1-a07](https://github.com/piot/nimble/releases/tag/v0.0.1-a07) (2023-07-04)
 
 Idiomatic separate cmake files for each library. Fix a lot of compile warnings. Improve doxygen documentation.

@@ -1,5 +1,9 @@
 repo: piot/nimble
 repos:
+  assent-c:
+    name: Assent
+    repo: piot/assent-c
+    description: Authoritative State
   hazy-c:
     name: Hazy
     repo: piot/hazy-c
@@ -12,6 +16,22 @@ repos:
     name: Nimble Engine Client
     repo: piot/nimble-engine-client
     description: Prediction and rollback
+
+  nimble-serialize-c:
+    name: Nimble Serialize
+    repo: piot/nimble-serialize-c
+    description: Nimble Protocol
+
+  nimble-steps-serialize-c:
+    name: Nimble Steps Serialize
+    repo: piot/nimble-steps-serialize-c
+    description: Nimble Steps Serialize
+
+  transmute-c:
+    name: Transmute
+    repo: piot/transmute-c
+    description: Ticks simulation with input
+
   nimble-server-lib:
     name: Nimble Server Library
     repo: piot/nimble-server-lib
@@ -48,11 +68,98 @@ repos:
     Name: Secure Random
     repo: piot/secure-random-c
     description: Multi-platform Secure Random
+  imprint:
+    Name: Imprint
+    repo: piot/imprint
+    description: memory allocator
 
 releases:
+  - name: 'v0.0.1-a08'
+    date: '2023-09-03'
+    notice: |
+      New feature that enables a client to rejoin the game after being disconnected.
+      When a client joins a game, a secret is provided by the server. That secret can be provided
+      on future rejoins to retain most of the clients avatar state and similar.
+    repos:
+      assent-c:
+        added:
+          - convert between Step connect state and transmute input type
+        improved:
+          - clean up CMakeLists.txt
+
+      clog:
+        fixed:
+          - fix incorrect `clog_gmtime_s()` (#7)
+
+      flood-c:
+        changed:
+          - only write and check markers when it is a debug info stream
+
+      imprint:
+        improved:
+          - clean up CMakeLists.txt
+
+      nimble-client-c:
+        added:
+          - add connect request and response. (#2)
+          - option to request debug streams using `wantsDebugStreams`
+
+        improved:
+          - more optimal step id to send to server based on latency. $ab1d78f
+
+      nimble-engine-client:
+        added:
+          - add `connectionSecretIsProvided` and `connectionSecret` fields in
+            join options (#2)
+
+      nimble-serialize-c:
+        added:
+          - connect request and response that includes request for debug streams
+          - serialize secret for participant connection
+
+        improved:
+          - proper command types for join game request and join game response
+          - clean up CMakeLists.txt
+
+      nimble-server-lib:
+        added:
+          - include a random secret in join game response to enable possible
+            reconnect to the same participant connection by the client.
+          - add `maxWaitingForReconnectTicks` field to setup.
+          - keep the participantConnection alive for reconnect (up to
+            `maxWaitingForReconnectTicks``)
+
+        fixed:
+          - have a more forgiving disconnect timeout until the first step
+            (input) is received from the client (presumably is done with
+            downloading the state)
+
+      nimble-steps-serialize-c:
+        added:
+          - add connect state that can indicate one of 'normal', 'not provided
+            in time' and 'waiting for reconnect' (#2)
+
+        improved:
+          - clean up CMakeLists.txt
+
+      seer-c:
+        added:
+          - convert from input type to connect state (#2)
+
+      time-tick-c:
+        improved:
+          - clean up code to increase readability
+
+      transmute-c:
+        added:
+          - input type that can be either Normal, NoInputInTime, or
+            WaitingForReconnect $77e87f2
+
   - name: 'v0.0.1-a07'
     date: '2023-07-04'
-    notice: Idiomatic separate cmake files for each library. Fix a lot of compile warnings. Improve doxygen documentation.
+    notice:
+      Idiomatic separate cmake files for each library. Fix a lot of compile
+      warnings. Improve doxygen documentation.
     repos:
       datagram-transport-c:
         breaking:
@@ -89,7 +196,7 @@ releases:
   - name: 'v0.0.1-a05'
     date: '2023-06-14'
     notice: |
-            IMPORTANT: Hot fixes to alleviate skip ahead problems.
+      IMPORTANT: Hot fixes to alleviate skip ahead problems.
     repos:
       nimble-engine-client:
         changed:
