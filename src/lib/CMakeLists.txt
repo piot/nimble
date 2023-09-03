@@ -75,8 +75,6 @@ elseif(OS_MACOS)
   unixlike()
 endif()
 
-target_include_directories(nimble PUBLIC ../include)
-
 if(COMPILER_CLANG)
   target_compile_options(
     nimble
