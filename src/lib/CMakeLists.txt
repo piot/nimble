@@ -41,18 +41,6 @@ endif()
 add_library(nimble STATIC nothing.c)
 
 
-if(APPLE)
-  target_compile_definitions(nimble PRIVATE TORNADO_OS_MACOS)
-  set(OS_MACOS 1)
-elseif(UNIX)
-  target_compile_definitions(nimble PRIVATE TORNADO_OS_LINUX)
-  set(OS_LINUX 1)
-elseif(WIN32)
-  target_compile_definitions(nimble PRIVATE TORNADO_OS_WINDOWS)
-  set(OS_WINDOWS 1)
-
-endif()
-
 if(isDebug)
   message("Setting definitions based on debug")
   target_compile_definitions(nimble PRIVATE CONFIGURATION_DEBUG)
