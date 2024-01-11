@@ -71,13 +71,6 @@ elseif(OS_MACOS)
   unixlike()
 endif()
 
-if(COMPILER_CLANG)
-elseif(COMPILER_GCC)
-elseif(COMPILER_MSVC)
-else()
-  target_compile_options(nimble PRIVATE -Wall)
-endif()
-
 target_link_libraries(nimble PUBLIC
  nimble-engine-client
  nimble-server-lib
