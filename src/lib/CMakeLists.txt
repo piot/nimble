@@ -124,7 +124,11 @@ else()
 endif()
 
 
-target_link_libraries(nimble PUBLIC nimble-engine-client PUBLIC nimble-server-lib PUBLIC datagram-transport-local PUBLIC hazy)
+target_link_libraries(nimble PUBLIC
+ nimble-engine-client
+ nimble-server-lib
+ datagram-transport-local
+ hazy)
 
 
 if(useSanitizers)
