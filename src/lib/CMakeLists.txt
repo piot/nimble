@@ -38,11 +38,7 @@ endif()
 
 # --- Library ---
 
-
-file(GLOB lib_src FOLLOW_SYMLINKS "./*.c")
-
-
-add_library(nimble STATIC ${lib_src})
+add_library(nimble STATIC nothing.c)
 
 
 if(APPLE)
