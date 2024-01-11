@@ -79,7 +79,6 @@ if(COMPILER_CLANG)
             -Wno-padded # the order of the fields in struct can matter (ABI)
             -Wno-declaration-after-statement # must be bug in clang? shows up
                                              # even if std=c99
-            -Wno-unsafe-buffer-usage # unclear why it fails on clang-16
             -Wno-unknown-warning-option # support newer clang versions, e.g. clang-16
             -Wno-disabled-macro-expansion
             ${sanitizers})
