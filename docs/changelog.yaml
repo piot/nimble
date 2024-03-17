@@ -61,20 +61,20 @@ repos:
     repo: piot/seer-c
     description: Prediction Library
   clog:
-    Name: CLog
+    name: CLog
     repo: piot/clog
     description: Basic logging
   secure-random-c:
-    Name: Secure Random
+    name: Secure Random
     repo: piot/secure-random-c
     description: Multi-platform Secure Random
   imprint:
-    Name: Imprint
+    name: Imprint
     repo: piot/imprint
     description: memory allocator
 
 releases:
-  - name: 'v0.0.1-a08'
+  'v0.0.1-a08':
     date: '2023-09-03'
     notice: |
       New feature that enables a client to rejoin the game after being disconnected.
@@ -155,7 +155,7 @@ releases:
           - input type that can be either Normal, NoInputInTime, or
             WaitingForReconnect $77e87f2
 
-  - name: 'v0.0.1-a07'
+  'v0.0.1-a07':
     date: '2023-07-04'
     notice:
       Idiomatic separate cmake files for each library. Fix a lot of compile
@@ -166,12 +166,6 @@ releases:
           - '`datagramTransportMultiReceiveFrom()` return `ssize_t` instead of
             `int`. $6c3d3b9'
 
-      time-tick-c:
-        improved:
-          - 'Smoother ticks. As long as possible, do one tick for each update
-            (does not work if update rate is a lot higher or lower than the
-            target tick rate). #1'
-
       nimble-engine-client:
         removed:
           - remove unused field `isHostingLocally`
@@ -181,7 +175,13 @@ releases:
           - 'halt execution (`SIGABRT`) in `secureRandomUInt64()` on Emscripten.
             #2'
 
-  - name: 'v0.0.1-a06'
+      time-tick-c:
+        improved:
+          - 'Smoother ticks. As long as possible, do one tick for each update
+            (does not work if update rate is a lot higher or lower than the
+            target tick rate). #1'
+
+  'v0.0.1-a06':
     date: '2023-06-22'
     notice: Minor compile fixes for emscripten.
     repos:
@@ -193,7 +193,7 @@ releases:
         workaround:
           - '`secureRandomUInt64()` on emscripten that only return 0'
 
-  - name: 'v0.0.1-a05'
+  'v0.0.1-a05':
     date: '2023-06-14'
     notice: |
       IMPORTANT: Hot fixes to alleviate skip ahead problems.
@@ -207,7 +207,7 @@ releases:
           - Skip increase forcedStepInRowCounter if client transport connection
             is downloading game state
 
-  - name: 'v0.0.1-a04'
+  'v0.0.1-a04':
     date: '2023-05-17'
     notice: Focus on disconnect detection on client and server.
     repos:
@@ -262,7 +262,7 @@ releases:
 
   # ------
 
-  - name: 'v0.0.1-a03'
+  'v0.0.1-a03':
     date: '2023-05-15'
     notice:
     repos:
