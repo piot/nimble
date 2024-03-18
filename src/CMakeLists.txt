@@ -27,6 +27,7 @@ add_subdirectory(deps/piot/stats-c/src/lib)
 add_subdirectory(deps/piot/time-tick-c/src/lib)
 add_subdirectory(deps/piot/tiny-libc/src/lib)
 add_subdirectory(deps/piot/transmute-c/src/lib)
+add_subdirectory(deps/piot/mash-c/src/lib)
 
 
 add_subdirectory(lib)
