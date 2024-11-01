@@ -1,9 +1,11 @@
-# Nimble Network Engine
+# Nimble Network Engine 🕹️
 
-Designed for deterministic networked games and simulations, where only the undeterministic data (usually only user input from the player) is sent.
-Supports late joining by sending a complete game state on connect.
+Nimble Network Engine (C library) is built for deterministic networked games and simulations, efficiently transmitting only the non-deterministic data — usually just player inputs. It supports late joiners by sending a complete game state when requested, guaranteeing that all participants remain perfectly synchronized for a fully deterministic experience.
 
-## Overview
+> [!IMPORTANT]
+> This Nimble C version is not production-ready. Will be replaced by [Nimble Rust](https://github.com/nimble-rust/nimble) in the future.
+
+## ✨ Overview
 
 Low level details of the [Nimble Protocol](https://github.com/piot/nimble-serialize-c/blob/main/docs/index.adoc) and how the
 [server assembles the Steps](https://github.com/piot/nimble-server-lib/blob/main/docs/index.adoc) from the clients.
@@ -45,6 +47,13 @@ It also uses general libraries like:
 It is recommended that [Hazy](https://github.com/piot/hazy-c) is used for Internet Simulation.
 It is included in the Nimble Engine, even though it is not a dependency.
 
+## 📦 Installation
+
+* Download the source file zip (nimble_source_code*.zip) from the latest [release](https://github.com/piot/nimble/releases).
+* Extract it to a directory
+* Use the include `CMakeLists.txt` in your project [add_sub_directory](https://cmake.org/cmake/help/latest/command/add_subdirectory.html)
+* add `nimble` to your [target_link_libraries](https://cmake.org/cmake/help/latest/command/target_link_libraries.html)
+
 ### Example Test Transports
 
 There is no Transport Layer implementation included in Nimble, it only relies on the
@@ -54,21 +63,19 @@ Here are two different transports that are useful for testing:
 
 * UDP Connections. Very thin layer on top of the datagram layer (UDP).
   [Client](https://github.com/piot/udp-connections-client-c) and [Server](https://github.com/piot/udp-server-connections).
-* Conclave (under development). Basic matchmaking and Datagram relay.
-  [Client](https://github.com/piot/conclave-client-c) and [Server](https://github.com/piot/conclave-server-lib).
 
 ## Example Applications
 
 Examples using Nimble Engine:
 
-* [Nimble Ball](https://github.com/piot/nimble-ball).
-  * [Nimble Ball Presentation](https://github.com/piot/nimble-ball-presentation)
-    * [Sdl Render](https://github.com/piot/sdl-render)
-  * [Nimble Ball Simulation](https://github.com/piot/nimble-ball-simulation)
+* [Nimble Ball](https://github.com/piot/nimble-ball)
 
-## Get started
+## License
 
-* Download the source file zip (nimble_source_code*.zip) from the latest [release](https://github.com/piot/nimble/releases).
-* Extract it to a directory
-* Use the include `CMakeLists.txt` in your project [add_sub_directory](https://cmake.org/cmake/help/latest/command/add_subdirectory.html)
-* add `nimble` to your [target_link_libraries](https://cmake.org/cmake/help/latest/command/target_link_libraries.html)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+*Copyright (c) Peter Bjorklund - All rights reserved.*
+
+## Contributions
+
+Currently, we are not accepting external contributions to this project.
